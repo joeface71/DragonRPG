@@ -1820,8 +1820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0afb7820f02a334b803f81f5c2f98db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyBar: {fileID: 0}
+  energyBar: {fileID: 1608680194}
   maxEnergyPoints: 100
+  pointsPerHit: 10
 --- !u!1001 &1032773149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3323,6 +3324,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608680194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1018587351, guid: 75a43cca039264395b99698681e52275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1286520290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1653674916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 408730, guid: cb375dec0a59bd842ae452ec27ad00f7,
