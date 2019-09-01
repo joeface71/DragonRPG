@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioTrigger : MonoBehaviour
 {
-    [SerializeField] AudioClip clip;
+    [SerializeField] AudioClip clip = null;
     [SerializeField] int layerFilter = 0;
     [SerializeField] float triggerRadius = 5f;
     [SerializeField] bool isOneTimeOnly = true;

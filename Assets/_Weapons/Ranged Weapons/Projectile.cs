@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using RPG.Core;
+﻿using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Weapons
@@ -8,7 +6,7 @@ namespace RPG.Weapons
     public class Projectile : MonoBehaviour
     {
 
-        [SerializeField] float projectileSpeed;
+        [SerializeField] float projectileSpeed = 0;
 
         [SerializeField] GameObject shooter; // So we can see who the shooter is
 

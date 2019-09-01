@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine.AI;
 using RPG.CameraUI; //TODO Rewire?
+using RPG.Characters;
 
 namespace RPG.CameraUI
 {
@@ -17,9 +18,6 @@ namespace RPG.CameraUI
         AICharacterControl aiCharacterControl = null;
         GameObject walkTarget = null;
 
-        // TODO solve fight between serialize and const
-        [SerializeField] const int walkableLayerNumber = 8;
-        [SerializeField] const int enemyLayerNumber = 9;
 
         void Start()
         {
@@ -28,9 +26,17 @@ namespace RPG.CameraUI
             currentDestination = transform.position;
             aiCharacterControl = GetComponent<AICharacterControl>();
             walkTarget = new GameObject("walkTarget");
-
-            cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
+            
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+        }
+
+        private void OnMouseOverEnemy(Enemy enemy)
+        {
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
+            {
+                aiCharacterControl.SetTarget(enemy.transform);
+            }
         }
 
         private void OnMouseOverPotentiallyWalkable(Vector3 destination)
@@ -41,22 +47,7 @@ namespace RPG.CameraUI
                 aiCharacterControl.SetTarget(walkTarget.transform);
             }            
         }
-
-        void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
-        {
-            switch (layerHit)
-            {
-                case enemyLayerNumber:
-                    // navigate to the enemy
-                    GameObject enemy = raycastHit.collider.gameObject;
-                    aiCharacterControl.SetTarget(enemy.transform);
-                    break;               
-                default:
-                    Debug.LogWarning("Don't know how to handle mouse click for player movement");
-                    return;
-            }
-        }
-
+        
         // TODO make this get called again
         void ProcessDirectMovement()
         {
