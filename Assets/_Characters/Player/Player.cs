@@ -3,23 +3,23 @@ using UnityEngine.Assertions;
 using RPG.CameraUI; //TODO Rewire?
 using RPG.Weapons;
 using RPG.Core;
+using System;
 
 namespace RPG.Characters
 {
     public class Player : MonoBehaviour, IDamageable
     {
         [SerializeField] float maxHealthPoints = 100f;
-        [SerializeField] float damagePerHit = 10f;
-        
+        [SerializeField] float baseDamage = 10f;        
         [SerializeField] Weapon weaponInUse = null;
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
+
+        [SerializeField] SpecialAbility[] abilities = null;
 
         Animator animator;    
         float currentHealthPoints;
         CameraRaycaster cameraRaycaster;
         float lastHitTime = 0f;
-
-
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -29,6 +29,7 @@ namespace RPG.Characters
             SetCurrentMaxHealth();
             PutWeaponInHand();
             SetupRuntimeAnimator();
+            abilities[0].AttachComponentTo(gameObject);
         }
 
         public void TakeDamage(float damage)
@@ -78,6 +79,24 @@ namespace RPG.Characters
             {
                 AttackTarget(enemy);
             }
+
+            else if (Input.GetMouseButtonDown(1))
+            {
+                AttemptSpecialAbillity(0, enemy);
+            }
+        }
+
+        private void AttemptSpecialAbillity(int abilityIndex, Enemy enemy)
+        {
+            var energyComponent = GetComponent<Energy>();
+            var energyCost = abilities[abilityIndex].GetEnergyCost();
+
+            if (energyComponent.IsEnergyAvailable(energyCost))
+            {
+                energyComponent.ConsumeEnergy(energyCost);
+                var abilityParams = new AbilityUseParams(enemy, baseDamage);
+                abilities[abilityIndex].Use(abilityParams);
+            }
         }
 
         private void AttackTarget(Enemy enemy)
@@ -85,7 +104,7 @@ namespace RPG.Characters
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
                 animator.SetTrigger("Attack");
-                enemy.TakeDamage(damagePerHit);
+                enemy.TakeDamage(baseDamage);
                 lastHitTime = Time.time;
             }
         }

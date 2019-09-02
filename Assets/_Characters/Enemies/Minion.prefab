@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1366168590}
   - component: {fileID: 11469404}
   - component: {fileID: 1366168583}
-  - component: {fileID: 2973873442625776042}
+  - component: {fileID: 7958493107434892719}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Untagged
@@ -145,7 +145,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2973873442625776042
+--- !u!114 &7958493107434892719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,14 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac46da830b7bf0443b928b3e59950ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 100
+  maxHealthPoints: 50
   chaseRadius: 6
   attackRadius: 4
-  damagePerShot: 5
+  damagePerShot: 9
   secondsBetweenShots: 0.5
-  projectileToUse: {fileID: 7879081843806668531, guid: 0da4eac8b7fc5a845b384c66f41cd9d4,
-    type: 3}
-  projectileSocket: {fileID: 9006355172941926699}
+  projectileToUse: {fileID: 0}
+  projectileSocket: {fileID: 0}
   aimOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &4229859274459515655
 GameObject:
