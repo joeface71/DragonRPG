@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine.AI;
 using RPG.CameraUI; //TODO Rewire?
 using RPG.Characters;
@@ -26,7 +25,7 @@ namespace RPG.CameraUI
             currentDestination = transform.position;
             aiCharacterControl = GetComponent<AICharacterControl>();
             walkTarget = new GameObject("walkTarget");
-            
+
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
@@ -45,9 +44,9 @@ namespace RPG.CameraUI
             {
                 walkTarget.transform.position = destination;
                 aiCharacterControl.SetTarget(walkTarget.transform);
-            }            
+            }
         }
-        
+
         // TODO make this get called again
         void ProcessDirectMovement()
         {
