@@ -86,10 +86,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.3580685
+  m_Radius: 0.20000002
+  m_Height: 2.003325
   m_Direction: 1
-  m_Center: {x: 0, y: 0.67903423, z: 0}
+  m_Center: {x: 0, y: 0.85640603, z: 0}
 --- !u!114 &1366168590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 149790}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -162,8 +162,9 @@ MonoBehaviour:
   attackRadius: 4
   damagePerShot: 9
   secondsBetweenShots: 0.5
-  projectileToUse: {fileID: 0}
-  projectileSocket: {fileID: 0}
+  projectileToUse: {fileID: 7879081843806668531, guid: 0da4eac8b7fc5a845b384c66f41cd9d4,
+    type: 3}
+  projectileSocket: {fileID: 9006355172941926699}
   aimOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &4229859274459515655
 GameObject:
