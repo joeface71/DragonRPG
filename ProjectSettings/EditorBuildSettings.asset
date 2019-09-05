@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Levels/Joe's Village.unity
+    guid: 73e0bcfc01b7be14da890bb9ab54e5ca
   m_configObjects: {}

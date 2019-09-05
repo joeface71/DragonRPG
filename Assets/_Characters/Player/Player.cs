@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using RPG.CameraUI; //TODO Rewire?
 using RPG.Weapons;
 using RPG.Core;
 using System;
+using System.Collections;
 
 namespace RPG.Characters
 {
@@ -34,7 +36,26 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
+            ReduceHealth(damage);
+            bool playerDies = (currentHealthPoints - damage <= 0);
+            if (playerDies)
+            {                
+                StartCoroutine(KillPlayer());
+            }            
+        }
+
+        IEnumerator KillPlayer()
+        {
+            print("death sound");
+            print("death animation");
+            yield return new WaitForSecondsRealtime(2f);
+            SceneManager.LoadScene(0);
+        }
+
+        private void ReduceHealth(float damage)
+        {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+            // play sound
         }
 
         private void SetCurrentMaxHealth()
