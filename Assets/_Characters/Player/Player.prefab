@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9268856d129aa64a8ab4590ce181c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 100
+  maxHealthPoints: 1000
   baseDamage: 10
   weaponInUse: {fileID: 11400000, guid: 87b75645d071c774787b56940c471f1f, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: 06a84e586d20112418d7869a48a1949f,
@@ -1506,8 +1506,9 @@ MonoBehaviour:
   deathSounds:
   - {fileID: 8300000, guid: 4a1401a705fdd024d8db5ba46dafe120, type: 3}
   abilities:
+  - {fileID: 11400000, guid: 56b667e0d322d684f90a5ec46ead17de, type: 2}
   - {fileID: 11400000, guid: 01fec6b2c31f7ab41bd6c42a96de3e87, type: 2}
-  - {fileID: 11400000, guid: 30ee951e607f03f42827c8683a9cb6fb, type: 2}
+  - {fileID: 11400000, guid: f3761f45aaa0a9640befed4afb2da5b4, type: 2}
 --- !u!114 &5351646675963668847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0afb7820f02a334b803f81f5c2f98db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyBar: {fileID: 0}
+  energyOrb: {fileID: 0}
   maxEnergyPoints: 100
   regenPointsPerSecond: 1
 --- !u!82 &6923468312185398537
@@ -2302,7 +2303,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75a95c1a6b684504c93637e35347c475, type: 2}
+  - {fileID: 2100000, guid: 78be5954566d2d848918e51832341fa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

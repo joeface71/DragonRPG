@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Characters;
 using RPG.Core;
-
+using System;
 
 public class AreaEffectBehavior : MonoBehaviour, ISpecialAbility
 {
     AreaEffectConfig config;
+    ParticleSystem myParticleSystem;    
 
     public void SetConfig(AreaEffectConfig configToSet)
     {
@@ -16,10 +17,24 @@ public class AreaEffectBehavior : MonoBehaviour, ISpecialAbility
 
     private void Start()
     {
-        print("Area effect behavior attached to: " + gameObject.name);
+        print("Area effect behavior attached to: " + gameObject.name);        
     }
 
     public void Use(AbilityUseParams useParams)
+    {
+        DealRadialDamage(useParams);
+        PlayParticleEffect();
+    }
+
+    private void PlayParticleEffect()
+    {
+       var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
+       myParticleSystem = prefab.GetComponent<ParticleSystem>();
+       myParticleSystem.Play();
+       Destroy(prefab, myParticleSystem.main.duration);
+    }
+
+    private void DealRadialDamage(AbilityUseParams useParams)
     {
         print("Area Effect used.");
 
@@ -37,11 +52,10 @@ public class AreaEffectBehavior : MonoBehaviour, ISpecialAbility
             if (damageable != null)
             {
                 float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget();
-                damageable.TakeDamage(damageToDeal);
+                damageable.AdjustHealth(damageToDeal);
             }
         }
     }
-
 }
 
 

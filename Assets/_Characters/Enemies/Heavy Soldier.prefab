@@ -1120,7 +1120,8 @@ MonoBehaviour:
   chaseRadius: 6
   attackRadius: 4
   damagePerShot: 9
-  secondsBetweenShots: 0.5
+  firingPeriodInSeconds: 0.5
+  FiringPeriodVariation: 0.1
   projectileToUse: {fileID: 7879081843806668531, guid: 0da4eac8b7fc5a845b384c66f41cd9d4,
     type: 3}
   projectileSocket: {fileID: 6289599813952371005}
@@ -1438,7 +1439,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2fd18c6846cdb64d931b99247113d0a, type: 2}
+  - {fileID: 2100000, guid: 01b2546c969fe814794af634cb4534f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -70,6 +70,8 @@
      <Compile Include="Assets\_Characters\Special Abilities\Area Effect\AreaEffectConfig.cs" />
      <Compile Include="Assets\_Characters\Special Abilities\Power Attack\PowerAttackBehavior.cs" />
      <Compile Include="Assets\_Characters\Special Abilities\Power Attack\PowerAttackConfig.cs" />
+     <Compile Include="Assets\_Characters\Special Abilities\Self Heal\SelfHealBehavior.cs" />
+     <Compile Include="Assets\_Characters\Special Abilities\Self Heal\SelfHealConfig.cs" />
      <Compile Include="Assets\_Characters\Special Abilities\SpecialAbility.cs" />
      <Compile Include="Assets\_Characters\ThirdPersonCharacter.cs" />
      <Compile Include="Assets\_Core\AudioTrigger.cs" />
@@ -92,6 +94,7 @@
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\_Environment\Water\DO_NOT_WORK_IN_VR.txt" />
      <None Include="Assets\_Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+     <None Include="Assets\Asset Packs - For Students\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\_Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\_Environment\Village\FXWaterPro.shader" />
      <None Include="Assets\_Environment\Water\Water4\Shaders\WaterInclude.cginc" />
