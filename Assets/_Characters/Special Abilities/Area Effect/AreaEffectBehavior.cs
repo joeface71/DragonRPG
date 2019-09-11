@@ -8,36 +8,36 @@ using System;
 public class AreaEffectBehavior : MonoBehaviour, ISpecialAbility
 {
     AreaEffectConfig config;
-    ParticleSystem myParticleSystem;    
+    ParticleSystem myParticleSystem;
+    AudioSource audioSource;
+
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void SetConfig(AreaEffectConfig configToSet)
     {
         this.config = configToSet;
     }
 
-    private void Start()
-    {
-        print("Area effect behavior attached to: " + gameObject.name);        
-    }
-
     public void Use(AbilityUseParams useParams)
     {
         DealRadialDamage(useParams);
         PlayParticleEffect();
+        audioSource.clip = config.GetAudioClip();
+        audioSource.Play();
     }
 
     private void PlayParticleEffect()
     {
-       var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
-       myParticleSystem = prefab.GetComponent<ParticleSystem>();
-       myParticleSystem.Play();
-       Destroy(prefab, myParticleSystem.main.duration);
+        var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
+        myParticleSystem = prefab.GetComponent<ParticleSystem>();
+        myParticleSystem.Play();
+        Destroy(prefab, myParticleSystem.main.duration);
     }
 
     private void DealRadialDamage(AbilityUseParams useParams)
     {
-        print("Area Effect used.");
-
         // Static SphereCast for targets
         RaycastHit[] hits = Physics.SphereCastAll(
             transform.position,
@@ -49,10 +49,11 @@ public class AreaEffectBehavior : MonoBehaviour, ISpecialAbility
         foreach (RaycastHit hit in hits)
         {
             var damageable = hit.collider.gameObject.GetComponent<IDamageable>();
-            if (damageable != null)
+            bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
+            if (damageable != null && !hitPlayer)
             {
                 float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget();
-                damageable.AdjustHealth(damageToDeal);
+                damageable.TakeDamage(damageToDeal);
             }
         }
     }

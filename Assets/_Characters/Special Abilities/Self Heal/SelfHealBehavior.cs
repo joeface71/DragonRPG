@@ -6,12 +6,15 @@ namespace RPG.Characters
 {
     public class SelfHealBehaviour : MonoBehaviour, ISpecialAbility
     {
-        SelfHealConfig config;
-        Player player;
+        SelfHealConfig config = null;
+        Player player = null;
+        AudioSource audioSource = null;
+        ParticleSystem myParticleSystem = null;
 
         void Start()
         {
             player = GetComponent<Player>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void SetConfig(SelfHealConfig configToSet)
@@ -21,8 +24,18 @@ namespace RPG.Characters
 
         public void Use(AbilityUseParams useParams)
         {
-            print("Self heal used by: " + gameObject.name);
-            player.AdjustHealth(-config.GetExtraHealth()); // note -ve
+            PlayParticleEffect();
+            audioSource.clip = config.GetAudioClip();
+            audioSource.Play();
+        }
+
+        private void PlayParticleEffect()
+        {
+            var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
+            prefab.transform.parent = transform;
+            myParticleSystem = prefab.GetComponent<ParticleSystem>();
+            myParticleSystem.Play();
+            Destroy(prefab, myParticleSystem.main.duration);
         }
     }
 }
