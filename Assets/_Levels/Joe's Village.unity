@@ -7020,11 +7020,6 @@ PrefabInstance:
       propertyPath: energyOrb
       value: 
       objectReference: {fileID: 235345865}
-    - target: {fileID: 7551817516867664209, guid: ded104656cf46e24a88d71667155e7ee,
-        type: 3}
-      propertyPath: maxHealthPoints
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ded104656cf46e24a88d71667155e7ee, type: 3}
 --- !u!1001 &1125924118

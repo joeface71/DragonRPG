@@ -13,6 +13,7 @@ namespace RPG.Weapons
         [SerializeField] AnimationClip attackAnimation = null;
         [SerializeField] float minTimeBetweenHits = .5f;
         [SerializeField] float maxAttackRange = 2f;
+        [SerializeField] float additionalDamage = 10f;
 
         public float GetMinTimeBetweenHits()
         {
@@ -33,6 +34,11 @@ namespace RPG.Weapons
         {
             RemoveAnimationEvents();
             return attackAnimation;
+        }
+
+        public float getAdditionalDamage()
+        {
+            return additionalDamage;
         }
 
         // prevents asset packs from causing crashes

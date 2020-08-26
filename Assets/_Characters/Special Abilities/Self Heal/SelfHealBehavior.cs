@@ -24,6 +24,7 @@ namespace RPG.Characters
 
         public void Use(AbilityUseParams useParams)
         {
+            player.Heal(config.GetExtraHealth());
             PlayParticleEffect();
             audioSource.clip = config.GetAudioClip();
             audioSource.Play();
